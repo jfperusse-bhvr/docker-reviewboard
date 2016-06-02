@@ -13,6 +13,7 @@ RUN apt-get install -y libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev lib
 RUN easy_install reviewboard
 
 RUN pip install -U uwsgi
+RUN pip install p4python
 
 ADD start.sh /start.sh
 ADD uwsgi.ini /uwsgi.ini
