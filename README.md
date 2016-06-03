@@ -7,7 +7,8 @@ The requirements are PostgreSQL and memcached, you can use either dockersized ve
 
 ## Changes in this clone
 
-    - Added installation of p4python
+- Added installation of p4python
+- Added a logs media folder
 
 ## Quickstart. Run dockerized reviewboard with all dockerized dependencies, and persistent data in a docker container.
 
@@ -24,7 +25,7 @@ The requirements are PostgreSQL and memcached, you can use either dockersized ve
 
 To build the reviewboard docker, just run this:
 
-    docker build -t 'jfperusse/reviewboard' git://github.com/jfperusse/docker-reviewboard.git
+    docker build -t 'jfperusse/reviewboard' https://github.com/jfperusse-bhvr/docker-reviewboard.git
 
 After that, go the url, e.g. ```http://localhost:8000/```, login as ```admin:admin```, change the admin password, and change the location of your SMTP server so that the reviewboard can send emails. You are all set!
 
