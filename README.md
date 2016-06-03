@@ -26,11 +26,13 @@ The requirements are PostgreSQL and memcached, you can use either dockersized ve
     # Create a data container for reviewboard with ssh credentials and media.
     docker run -v /.ssh -v /media -v /logs --name rb-data busybox true
 
+    # Run reviewboard
+    docker run -it --link rb-postgres:pg --link rb-memcached:memcached --volumes-from rb-data -p 8000:8000 jfperussebhvr/reviewboard
 ## Build
 
 To build the reviewboard docker, just run this:
 
-    docker build -t 'jfperusse/reviewboard' https://github.com/jfperusse-bhvr/docker-reviewboard.git
+    docker build -t 'jfperussebhvr/reviewboard' https://github.com/jfperusse-bhvr/docker-reviewboard.git
 
 After that, go the url, e.g. ```http://localhost:8000/```, login as ```admin:admin```, change the admin password, and change the location of your SMTP server so that the reviewboard can send emails. You are all set!
 
@@ -94,7 +96,7 @@ E.g. ```-e UWSGI_PROCESSES=10``` will create 10 reviewboard processes.
 
     # Create a data container.
     docker run -v /.ssh -v /media --name rb-data busybox true
-    docker run -it --link rb-postgres:pg --link memcached:memcached --volumes-from rb-data -p 8000:8000 ikatson/reviewboard
+    docker run -it --link rb-postgres:pg --link memcached:memcached --volumes-from rb-data -p 8000:8000 jfperussebhvr/reviewboard
 
 ### Example. Run with postgres and memcached installed on the host machine.
 
@@ -102,7 +104,7 @@ E.g. ```-e UWSGI_PROCESSES=10``` will create 10 reviewboard processes.
 
     # Create a data container.
     docker run -v /.ssh -v /media --name rb-data busybox true
-    docker run -it -p 8000:8080 --volumes-from rb-data -e PGHOST="$DOCKER_HOST_IP" -e PGPASSWORD=123 -e PGUSER=reviewboard -e MEMCACHED="$DOCKER_HOST_IP":11211 ikatson/reviewboard
+    docker run -it -p 8000:8080 --volumes-from rb-data -e PGHOST="$DOCKER_HOST_IP" -e PGPASSWORD=123 -e PGUSER=reviewboard -e MEMCACHED="$DOCKER_HOST_IP":11211 jfperussebhvr/reviewboard
 
 Now, go to the url, e.g. ```http://localhost:8000/```, login as ```admin:admin``` and change the password. The reviewboard is almost ready to use!
 
