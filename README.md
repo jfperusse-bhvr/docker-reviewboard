@@ -8,7 +8,7 @@ The requirements are PostgreSQL and memcached, you can use either dockersized ve
 ## Changes in this clone
 
 - Added installation of p4python
-- Added a logs media folder
+- Added a logs folder in the reviewboard docker
 
 ## Quickstart. Run dockerized reviewboard with all dockerized dependencies, and persistent data in a docker container.
 
