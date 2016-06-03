@@ -10,6 +10,11 @@ The requirements are PostgreSQL and memcached, you can use either dockersized ve
 - Added installation of p4python
 - Added a logs folder in the reviewboard docker
 
+## Prerequisites
+
+- The following instructions have been tested on Ubuntu 14.04.
+- Docker was installed following the instructions found at https://docs.docker.com/engine/installation/linux/ubuntulinux/.
+
 ## Quickstart. Run dockerized reviewboard with all dockerized dependencies, and persistent data in a docker container.
 
     # Install postgres
