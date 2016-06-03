@@ -5,6 +5,10 @@ Dockerized reviewboard. This container follows Docker's best practices, and DOES
 
 The requirements are PostgreSQL and memcached, you can use either dockersized versions of them, or external ones, e.g. installed on the host machine, or even third-party machines.
 
+## Changes in this clone
+
+    - Added installation of p4python
+
 ## Quickstart. Run dockerized reviewboard with all dockerized dependencies, and persistent data in a docker container.
 
     # Install postgres
@@ -14,20 +18,17 @@ The requirements are PostgreSQL and memcached, you can use either dockersized ve
     docker run --name rb-memcached -d -p 11211 sylvainlasnier/memcached
 
     # Create a data container for reviewboard with ssh credentials and media.
-    docker run -v /.ssh -v /media --name rb-data busybox true
+    docker run -v /.ssh -v /media -v /logs --name rb-data busybox true
 
-    # Run reviewboard
-    docker run -it --link rb-postgres:pg --link rb-memcached:memcached --volumes-from rb-data -p 8000:8000 ikatson/reviewboard
+## Build
+
+To build the reviewboard docker, just run this:
+
+    docker build -t 'jfperusse/reviewboard' git://github.com/jfperusse/docker-reviewboard.git
 
 After that, go the url, e.g. ```http://localhost:8000/```, login as ```admin:admin```, change the admin password, and change the location of your SMTP server so that the reviewboard can send emails. You are all set!
 
 For details, read below.
-
-## Build yourself if you want.
-
-If you want to build this yourself, just run this:
-
-    docker build -t 'ikatson/reviewboard' git://github.com/ikatson/docker-reviewboard.git
 
 ## Dependencies
 
